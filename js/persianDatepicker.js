@@ -419,6 +419,8 @@
 
               if (self.options.startDate == undefined || (self.persianDate.parse(self.options.startDate).compare(_dt) != -1 && self.persianDate.parse(self.options.endDate).compare(_dt) != 1))
                 _cell.bind("click", function () {
+                  if (self.el.is(":disabled")) return;
+
                   self.calendar.find(".day").removeClass("selday");
                   $(this).addClass("selday");
                   if (self.options.showGregorianDate)
@@ -449,6 +451,8 @@
             .html('هم اکنون');
           if (self.options.startDate == null)
             _goToday.bind("click", function () {
+              if (self.el.is(":disabled")) return;
+
               self.persianDate = self.now();
 
               self.showDate(self.el, $(this).data('jdate'), $(this).data('gdate'), self.options.showGregorianDate);
